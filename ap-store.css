@@ -1,0 +1,206 @@
+/* AP Store — auth, cart, checkout, account, contact overlays */
+:root {
+  --ap-s-bg: #0b1210;
+  --ap-s-panel: #121c18;
+  --ap-s-line: rgba(196, 163, 90, 0.28);
+  --ap-s-gold: #c4a35a;
+  --ap-s-text: #e8efe9;
+  --ap-s-muted: #9bb0a3;
+  --ap-s-danger: #c45a5a;
+  --ap-s-ok: #3d9b6a;
+}
+
+#ap-store-toast {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 99999;
+  background: #163225;
+  color: var(--ap-s-text);
+  border: 1px solid var(--ap-s-line);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+  max-width: min(22rem, calc(100vw - 2rem));
+  transform: translateY(120%);
+  opacity: 0;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+#ap-store-toast.is-on {
+  transform: none;
+  opacity: 1;
+}
+
+.ap-panel {
+  background: var(--ap-s-panel);
+  border: 1px solid var(--ap-s-line);
+  border-radius: 12px;
+  padding: 1.25rem;
+  color: var(--ap-s-text);
+  margin: 1rem 0 2rem;
+}
+.ap-panel h2,
+.ap-panel h3 {
+  margin: 0 0 0.75rem;
+  color: #fff;
+  font-family: Georgia, "Times New Roman", serif;
+}
+.ap-panel p,
+.ap-muted {
+  color: var(--ap-s-muted);
+}
+.ap-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+@media (max-width: 720px) {
+  .ap-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+.ap-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 0.75rem;
+}
+.ap-field label {
+  font-size: 0.85rem;
+  color: var(--ap-s-muted);
+}
+.ap-field input,
+.ap-field textarea,
+.ap-field select {
+  background: #0b1210;
+  border: 1px solid var(--ap-s-line);
+  color: var(--ap-s-text);
+  border-radius: 8px;
+  padding: 0.65rem 0.75rem;
+  font: inherit;
+}
+.ap-field textarea {
+  min-height: 7rem;
+  resize: vertical;
+}
+.ap-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  border: 1px solid var(--ap-s-gold);
+  background: transparent;
+  color: var(--ap-s-text);
+  padding: 0.7rem 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 600;
+}
+.ap-btn:hover {
+  filter: brightness(1.08);
+}
+.ap-btn-primary {
+  background: var(--ap-s-gold) !important;
+  color: #0b1210 !important;
+  border-color: var(--ap-s-gold) !important;
+}
+.ap-btn-primary:visited,
+.ap-btn-primary:hover,
+.ap-btn-primary:focus {
+  color: #0b1210 !important;
+}
+.ap-btn-ghost {
+  border-color: transparent;
+  color: var(--ap-s-gold);
+}
+.ap-btn-danger {
+  border-color: var(--ap-s-danger);
+  color: #ffd0d0;
+}
+.ap-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+.ap-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.ap-table th,
+.ap-table td {
+  padding: 0.75rem 0.4rem;
+  border-bottom: 1px solid var(--ap-s-line);
+  text-align: left;
+  vertical-align: middle;
+  color: var(--ap-s-text) !important;
+}
+.ap-table th {
+  color: var(--ap-s-gold) !important;
+  font-weight: 600;
+}
+.ap-table img {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 6px;
+  background: #000;
+}
+.ap-qty {
+  width: 4.5rem;
+}
+.ap-total-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.05rem;
+  margin-top: 0.75rem;
+}
+.ap-badge {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--ap-s-line);
+  font-size: 0.75rem;
+  color: var(--ap-s-gold);
+}
+.ap-auth-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.ap-auth-tabs button {
+  flex: 1;
+}
+.ap-auth-tabs button.is-active {
+  background: var(--ap-s-gold);
+  color: #111;
+}
+.ap-error {
+  color: #ffb4b4;
+  font-size: 0.9rem;
+  margin: 0.35rem 0 0.75rem;
+}
+.ap-ok {
+  color: #b6f0cc;
+}
+.ap-empty {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+#ap-preview-note {
+  display: none !important;
+}
+.wd-header-cart .wd-tools-text,
+.wd-header-cart .wd-cart-number,
+.woodmart-cart-number {
+  font-variant-numeric: tabular-nums;
+}
+body.ap-authed .wd-header-my-account .wd-tools-text::after {
+  content: none;
+}
+.ap-inline-note {
+  font-size: 0.85rem;
+  color: var(--ap-s-muted);
+  margin-top: 0.5rem;
+}
