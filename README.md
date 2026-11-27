@@ -8,16 +8,19 @@ Static Anabolic Pharmacy AU storefront with browser-side auth, cart, checkout, a
 python3 serve.py 8765
 ```
 
-Open http://127.0.0.1:8765/ — you will be asked to register/log in before browsing.
+Open http://127.0.0.1:8765/ — register/log in before browsing.
+
+## Hostinger
+
+This project is ready for Hostinger static hosting. Follow **[HOSTINGER-DEPLOY.md](./HOSTINGER-DEPLOY.md)**.
+
+Short version: upload the site contents into `public_html` (keep `index.html` + `.htaccess` at the root), attach your domain, enable SSL.
 
 ## Features
 
-- **Auth gate:** every page requires login/register (`/my-account/`)
-- **Cart / checkout / account / contact:** functional via `ap-store.js` (data stored in the browser)
-- **Fast navigation:** deferred JS, lazy images, async CSS, hover prefetch (`ap-perf.js`), Hostinger `.htaccess` caching
+- Auth gate (login/register required)
+- Cart, checkout (Bitcoin / Bank transfer / PayID), account orders, contact
+- Telegram chat: https://t.me/anabolicpharmacys
+- Gzip + cache headers via `.htaccess` for Hostinger Apache/LiteSpeed
 
-## Hostinger deploy
-
-Upload this repo into `public_html` (keep `index.html` at the root), attach your domain, enable SSL. No Node build step.
-
-**Note:** Auth, cart, and orders are stored in the visitor’s browser (`localStorage`). They are not a shared server database. Card payments are not processed on this static build — checkout supports bank transfer / arrange payment and saves the order to the account on-device.
+**Note:** Auth/cart/orders are stored in the visitor’s browser (`localStorage`). Card payments are not processed on this static build.
