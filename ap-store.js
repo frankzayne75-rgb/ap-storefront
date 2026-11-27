@@ -307,23 +307,31 @@
 
   function paymentDetailsHtml(method) {
     if (method === 'bitcoin') {
-      return '<div class="ap-pay-card"><strong>Bitcoin wallet</strong><code id="ap-btc-addr">' + BTC_WALLET + '</code><button type="button" class="ap-btn ap-btn-ghost" id="ap-copy-btc">Copy address</button><p class="ap-inline-note">Send the exact order total in BTC to this address.</p></div>';
+      return '<div class="ap-pay-card"><div class="ap-pay-card-title">Send Bitcoin</div><p class="ap-muted">Transfer the order total to this wallet, then place your order.</p><code id="ap-btc-addr">' + BTC_WALLET + '</code><button type="button" class="ap-btn ap-btn-primary" id="ap-copy-btc">Copy wallet address</button></div>';
     }
     if (method === 'bank') {
-      return '<div class="ap-pay-card"><strong>Bank transfer</strong><p class="ap-muted">Choose Bank transfer at checkout. After placing your order, use the order ID as the payment reference. We will confirm details or follow up via your account email / Telegram.</p></div>';
+      return '<div class="ap-pay-card"><div class="ap-pay-card-title">Bank transfer</div><p class="ap-muted">Place your order, then use the order ID as your payment reference. We will confirm bank details by email or Telegram.</p></div>';
     }
     if (method === 'payid') {
-      return '<div class="ap-pay-card"><strong>PayID</strong><p class="ap-muted">Select PayID at checkout. After placing your order, contact us on Telegram with your order ID to receive the PayID details.</p></div>';
+      return '<div class="ap-pay-card"><div class="ap-pay-card-title">PayID</div><p class="ap-muted">Place your order, then message us on Telegram with your order ID to receive PayID details.</p><a class="ap-btn" href="https://t.me/anabolicpharmacys" target="_blank" rel="noopener noreferrer">Open Telegram</a></div>';
     }
     return '';
   }
 
   function wirePaymentDetails(root) {
-    var sel = root.querySelector('#ap-pay-method');
+    var hidden = root.querySelector('#ap-pay-method');
     var box = root.querySelector('#ap-pay-details');
-    if (!sel || !box) return;
-    function refresh() {
-      box.innerHTML = paymentDetailsHtml(sel.value);
+    var cards = root.querySelectorAll('[data-ap-pay]');
+    if (!hidden || !box || !cards.length) return;
+
+    function selectMethod(method) {
+      hidden.value = method;
+      cards.forEach(function (card) {
+        var on = card.getAttribute('data-ap-pay') === method;
+        card.classList.toggle('is-selected', on);
+        card.setAttribute('aria-checked', on ? 'true' : 'false');
+      });
+      box.innerHTML = paymentDetailsHtml(method);
       var copy = box.querySelector('#ap-copy-btc');
       if (copy) {
         copy.addEventListener('click', function () {
@@ -335,8 +343,19 @@
         });
       }
     }
-    sel.addEventListener('change', refresh);
-    refresh();
+
+    cards.forEach(function (card) {
+      card.addEventListener('click', function () {
+        selectMethod(card.getAttribute('data-ap-pay'));
+      });
+      card.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          selectMethod(card.getAttribute('data-ap-pay'));
+        }
+      });
+    });
+    selectMethod(hidden.value || 'bitcoin');
   }
 
   function injectTelegramChat() {
@@ -349,6 +368,25 @@
     a.setAttribute('aria-label', 'Chat on Telegram');
     a.innerHTML = '<span class="ap-tg-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 6.93-1.43 6.74c-.1.46-.39.57-.79.36l-2.18-1.61-1.05 1.01c-.12.12-.22.22-.44.22l.16-2.22 4.05-3.66c.18-.16-.04-.24-.27-.09l-5.01 3.15-2.16-.68c-.47-.14-.48-.47.1-.7l8.44-3.26c.39-.14.73.1.58.74z"/></svg></span><span class="ap-tg-label">Telegram</span>';
     document.body.appendChild(a);
+  }
+
+  function hideCheckoutChrome() {
+    document.querySelectorAll('.sidebar-container, .woodmart-instagram, .widget_categories, aside.sidebar-right').forEach(function (el) {
+      el.style.display = 'none';
+    });
+    document.querySelectorAll('.site-content, .content-layout-wrapper .main-page-wrapper, .main-page-wrapper > .container > .row > [class*="col-lg"]').forEach(function (el) {
+      if (el.classList.contains('sidebar-container')) return;
+      if (el.className && /col-lg-9|col-md-9|col-lg-12|site-content/.test(el.className)) {
+        el.style.maxWidth = '100%';
+        el.style.flex = '0 0 100%';
+        el.style.width = '100%';
+      }
+    });
+    var content = document.querySelector('.site-content');
+    if (content) {
+      content.classList.remove('col-lg-9', 'col-md-9');
+      content.classList.add('col-lg-12', 'col-md-12');
+    }
   }
 
   function mount(selectorFallback, html) {
@@ -558,9 +596,14 @@
       '<div class="ap-field"><label>Address</label><input name="address" required></div>' +
       '<div class="ap-grid-2"><div class="ap-field"><label>City</label><input name="city" required></div><div class="ap-field"><label>State / Territory</label><input name="state" required></div></div>' +
       '<div class="ap-grid-2"><div class="ap-field"><label>Postcode</label><input name="postcode" required></div><div class="ap-field"><label>Country</label><input name="country" value="Australia" required></div></div>' +
-      '<div class="ap-field"><label>Payment method</label><select name="payment" id="ap-pay-method"><option value="bitcoin">Bitcoin</option><option value="bank">Bank transfer</option><option value="payid">PayID</option></select></div>' +
-      '<div id="ap-pay-details" class="ap-pay-box"></div>' +
-      '<p class="ap-inline-note">Choose Bitcoin, Bank transfer, or PayID. Payment instructions appear below based on your selection.</p>' +
+      '<div class="ap-field"><span class="ap-label">Payment method</span>' +
+      '<div class="ap-pay-toggle" role="radiogroup" aria-label="Payment method">' +
+      '<button type="button" class="ap-pay-choice" data-ap-pay="bitcoin" role="radio" aria-checked="true"><span class="ap-pay-choice-icon" aria-hidden="true">BTC</span><span class="ap-pay-choice-text"><strong>Bitcoin</strong><small>Pay with BTC wallet</small></span></button>' +
+      '<button type="button" class="ap-pay-choice" data-ap-pay="bank" role="radio" aria-checked="false"><span class="ap-pay-choice-icon" aria-hidden="true">BANK</span><span class="ap-pay-choice-text"><strong>Bank transfer</strong><small>Pay with bank reference</small></span></button>' +
+      '<button type="button" class="ap-pay-choice" data-ap-pay="payid" role="radio" aria-checked="false"><span class="ap-pay-choice-icon" aria-hidden="true">ID</span><span class="ap-pay-choice-text"><strong>PayID</strong><small>Instant Australian PayID</small></span></button>' +
+      '</div>' +
+      '<input type="hidden" name="payment" id="ap-pay-method" value="bitcoin">' +
+      '<div id="ap-pay-details" class="ap-pay-box"></div></div>' +
       '<div class="ap-panel" style="margin:1rem 0 0;padding:1rem"><h3>Order summary</h3>' +
       lines +
       '<div class="ap-total-row"><span>Shipping</span><strong>' +
@@ -626,6 +669,26 @@
         err.hidden = false;
       }
     });
+  }
+
+
+  function wireQuantityControls() {
+    document.addEventListener('click', function (e) {
+      var btn = e.target.closest && e.target.closest('.quantity .plus, .quantity .minus, input.plus, input.minus');
+      if (!btn) return;
+      var wrap = btn.closest('.quantity');
+      if (!wrap) return;
+      var input = wrap.querySelector('input.qty');
+      if (!input) return;
+      e.preventDefault();
+      var step = parseFloat(input.getAttribute('step') || '1') || 1;
+      var min = parseFloat(input.getAttribute('min') || '1') || 1;
+      var val = parseFloat(input.value || '1') || 1;
+      if (btn.classList.contains('plus') || btn.value === '+') val += step;
+      else val = Math.max(min, val - step);
+      input.value = String(val);
+      input.dispatchEvent(new Event('change', { bubbles: true }));
+    }, true);
   }
 
   function wireAddToCart() {
@@ -710,14 +773,15 @@
     if (currentUser()) document.body.classList.add('ap-authed');
     refreshCartBadge();
     fixLinks();
+    wireQuantityControls();
     wireAddToCart();
 
     if (!requireAuth() && !isAuthPage()) return;
 
     var p = path();
     if (isAuthPage()) renderAuth();
-    else if (p === '/cart') renderCart();
-    else if (p === '/checkout') renderCheckout();
+    else if (p === '/cart') { hideCheckoutChrome(); renderCart(); }
+    else if (p === '/checkout') { hideCheckoutChrome(); renderCheckout(); }
     else if (p === '/contact-us') renderContact();
 
     var placed = new URLSearchParams(location.search).get('placed');

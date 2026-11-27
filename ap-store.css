@@ -209,6 +209,209 @@ body.ap-authed .wd-header-my-account .wd-tools-text::after {
   margin-top: 0.5rem;
 }
 
+/* Payment method toggle */
+.ap-label {
+  font-size: 0.9rem;
+  color: var(--ap-s-muted);
+  margin-bottom: 0.45rem;
+  display: block;
+}
+.ap-pay-toggle {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin: 0.35rem 0 0.85rem;
+}
+@media (max-width: 720px) {
+  .ap-pay-toggle { grid-template-columns: 1fr; }
+}
+.ap-pay-choice {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: left;
+  width: 100%;
+  padding: 0.85rem 0.9rem;
+  border-radius: 12px;
+  border: 1px solid var(--ap-s-line);
+  background: #0b1210;
+  color: var(--ap-s-text) !important;
+  cursor: pointer;
+  transition: border-color .15s ease, background .15s ease, transform .15s ease;
+}
+.ap-pay-choice:hover {
+  border-color: rgba(196,163,90,.55);
+  transform: translateY(-1px);
+}
+.ap-pay-choice.is-selected {
+  border-color: var(--ap-s-gold);
+  background: linear-gradient(180deg, rgba(196,163,90,.16), rgba(196,163,90,.05));
+  box-shadow: inset 0 0 0 1px rgba(196,163,90,.35);
+}
+.ap-pay-choice-icon {
+  flex: 0 0 auto;
+  min-width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: .04em;
+  color: #0b1210;
+  background: var(--ap-s-gold);
+}
+.ap-pay-choice-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+.ap-pay-choice-text strong {
+  font-size: 0.95rem;
+  color: #fff;
+}
+.ap-pay-choice-text small {
+  color: var(--ap-s-muted);
+  font-size: 0.78rem;
+}
+.ap-pay-box { margin-top: 0.15rem; }
+.ap-pay-card {
+  background: #0b1210;
+  border: 1px solid var(--ap-s-line);
+  border-radius: 12px;
+  padding: 1rem 1.05rem;
+}
+.ap-pay-card-title {
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.35rem;
+}
+.ap-pay-card code {
+  display: block;
+  margin: 0.65rem 0;
+  padding: 0.75rem 0.85rem;
+  background: #060a08;
+  border: 1px solid rgba(196,163,90,.2);
+  border-radius: 8px;
+  word-break: break-all;
+  color: #f0e2b8;
+  font-size: 0.92rem;
+}
+
+/* Quantity controls — readable on dark theme */
+.quantity,
+.product-quantity,
+td.product-quantity {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0;
+}
+.quantity .qty,
+.quantity input.qty,
+input.qty.input-text,
+.woocommerce .quantity .qty,
+.ap-qty {
+  min-width: 3.25rem !important;
+  width: 3.5rem !important;
+  height: 2.5rem !important;
+  text-align: center !important;
+  background: #0b1210 !important;
+  color: #f5f7f5 !important;
+  border: 1px solid rgba(196,163,90,.45) !important;
+  border-radius: 0 !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  -moz-appearance: textfield;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+.quantity .qty::-webkit-outer-spin-button,
+.quantity .qty::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.quantity .minus,
+.quantity .plus,
+.quantity input.minus,
+.quantity input.plus {
+  width: 2.5rem !important;
+  height: 2.5rem !important;
+  border: 1px solid rgba(196,163,90,.45) !important;
+  background: #163225 !important;
+  color: #f5f7f5 !important;
+  font-size: 1.15rem !important;
+  font-weight: 700 !important;
+  cursor: pointer;
+  line-height: 1 !important;
+}
+.quantity .minus { border-radius: 8px 0 0 8px !important; }
+.quantity .plus { border-radius: 0 8px 8px 0 !important; }
+.quantity .minus:hover,
+.quantity .plus:hover {
+  background: #1f4332 !important;
+  color: var(--ap-s-gold) !important;
+}
+
+/* Checkout / cart: no Instagram / sidebar clutter */
+body.woocommerce-checkout .sidebar-container,
+body.woocommerce-cart .sidebar-container,
+body.page-id-31958 .sidebar-container,
+.woodmart-instagram,
+.widget.woodmart-instagram {
+  display: none !important;
+}
+body.woocommerce-checkout .site-content,
+body.woocommerce-cart .site-content {
+  max-width: 100% !important;
+}
+
+/* Site polish — readable, calmer, keep Woodmart bones */
+.ap-panel {
+  max-width: 920px;
+}
+#ap-app-root {
+  padding: 0.5rem 0 1.5rem;
+}
+.woocommerce .product .summary .price,
+.summary .price {
+  color: var(--ap-s-gold) !important;
+  font-weight: 700;
+}
+.woocommerce div.product form.cart {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+.single_add_to_cart_button,
+.button.alt,
+.checkout-button,
+.wd-buy-now-btn {
+  border-radius: 8px !important;
+}
+.wd-header-cart .wd-tools-text,
+.wd-header-my-account .wd-tools-text {
+  letter-spacing: 0.02em;
+}
+.ap-table th {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.ap-actions .ap-btn {
+  min-height: 2.6rem;
+}
+body .woocommerce-message,
+body .woocommerce-info,
+body .woocommerce-error {
+  border-radius: 10px;
+}
+/* Slightly tighten first paint on product grids */
+ul.products li.product img {
+  background: #0b1210;
+}
+
 /* Telegram floating chat */
 #ap-tg-chat {
   position: fixed;
@@ -228,20 +431,24 @@ body.ap-authed .wd-header-my-account .wd-tools-text::after {
 }
 #ap-tg-chat:hover { filter: brightness(1.06); color: #fff !important; }
 #ap-tg-chat .ap-tg-ico { display: grid; place-items: center; }
-.ap-pay-box { margin: 0.35rem 0 0.85rem; }
-.ap-pay-card {
-  background: #0b1210;
-  border: 1px solid var(--ap-s-line);
-  border-radius: 10px;
-  padding: 0.9rem 1rem;
+
+/* Product tabs / description readability */
+.woocommerce-tabs,
+.woocommerce-tabs .tabs,
+.woocommerce-Tabs-panel,
+.wc-tabs-wrapper .wc-tab,
+.woocommerce div.product .woocommerce-tabs .panel {
+  background: transparent !important;
+  color: #e8efe9 !important;
 }
-.ap-pay-card code {
-  display: block;
-  margin: 0.5rem 0;
-  padding: 0.65rem 0.75rem;
-  background: #060a08;
-  border-radius: 8px;
-  word-break: break-all;
-  color: #f0e2b8;
-  font-size: 0.92rem;
+.woocommerce-Tabs-panel p,
+.woocommerce-Tabs-panel li,
+.wc-tab p {
+  color: #c7d0dc !important;
+}
+.woocommerce-tabs ul.tabs li a {
+  color: #c4a35a !important;
+}
+.woocommerce-tabs ul.tabs li.active a {
+  color: #fff !important;
 }
