@@ -288,7 +288,7 @@
       (document.querySelector('meta[property="og:image"]') && document.querySelector('meta[property="og:image"]').getAttribute('content')) ||
       (document.querySelector('.woocommerce-product-gallery__image img, .wp-post-image') &&
         document.querySelector('.woocommerce-product-gallery__image img, .wp-post-image').getAttribute('src')) ||
-      '/wp-content/uploads/anabolicpharmacyau-logo.svg';
+      '/site-assets/uploads/anabolicpharmacyau-logo.svg';
     var qtyInput = root.querySelector('input.qty, input[name="quantity"]');
     var qty = qtyInput ? Math.max(1, parseInt(qtyInput.value || '1', 10) || 1) : 1;
     return {
@@ -721,7 +721,7 @@
             id: btn.getAttribute('data-product_id'),
             name: title ? title.textContent.replace(/\s+/g, ' ').trim() : 'Product',
             price: parsePrice(card && card.querySelector('.price') && card.querySelector('.price').textContent),
-            image: (card && card.querySelector('img') && card.querySelector('img').getAttribute('src')) || '/wp-content/uploads/anabolicpharmacyau-logo.svg',
+            image: (card && card.querySelector('img') && card.querySelector('img').getAttribute('src')) || '/site-assets/uploads/anabolicpharmacyau-logo.svg',
             url: (card && card.querySelector('a.product-image-link, a') && card.querySelector('a.product-image-link, a').getAttribute('href')) || location.pathname,
             qty: 1,
           };

@@ -45,7 +45,7 @@
     var brand = document.createElement('div');
     brand.id = 'ap-footer-brand';
     brand.innerHTML =
-      '<img src="/wp-content/uploads/anabolicpharmacyau-logo.svg" alt="Anabolic Pharmacy AU" width="160" height="auto" loading="lazy">' +
+      '<img src="/site-assets/uploads/anabolicpharmacyau-logo.svg" alt="Anabolic Pharmacy AU" width="160" height="auto" loading="lazy">' +
       '<p id="ap-footer-tagline">Sign in to shop. Cart, checkout, account, and contact run in your browser session.</p>';
     col1.insertBefore(brand, col1.firstChild);
   }

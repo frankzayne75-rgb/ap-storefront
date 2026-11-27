@@ -1,6 +1,6 @@
 # ap-storefront
 
-Static Anabolic Pharmacy AU storefront with browser-side auth, cart, checkout, account, and contact.
+Static Anabolic Pharmacy AU storefront (HTML/CSS/JS) with auth, cart, checkout, account, and contact.
 
 ## Local preview
 
@@ -8,19 +8,15 @@ Static Anabolic Pharmacy AU storefront with browser-side auth, cart, checkout, a
 python3 serve.py 8765
 ```
 
-Open http://127.0.0.1:8765/ — register/log in before browsing.
-
 ## Hostinger
 
-This project is ready for Hostinger static hosting. Follow **[HOSTINGER-DEPLOY.md](./HOSTINGER-DEPLOY.md)**.
+See **[HOSTINGER-DEPLOY.md](./HOSTINGER-DEPLOY.md)**.
 
-Short version: upload the site contents into `public_html` (keep `index.html` + `.htaccess` at the root), attach your domain, enable SSL.
+Important: Hostinger’s Create Site “one page” upload card will reject a full multi-page zip (and used to flag old `wp-content` folders as a WordPress backup). Use `hostinger-starter.zip` only for that card, then deploy the full site with **File Manager** (`hostinger-upload.zip`) or **Git** from `main`.
+
+Asset folders are named `site-assets/` and `site-lib/` (not WordPress `wp-*` names).
 
 ## Features
 
-- Auth gate (login/register required)
-- Cart, checkout (Bitcoin / Bank transfer / PayID), account orders, contact
-- Telegram chat: https://t.me/anabolicpharmacys
-- Gzip + cache headers via `.htaccess` for Hostinger Apache/LiteSpeed
-
-**Note:** Auth/cart/orders are stored in the visitor’s browser (`localStorage`). Card payments are not processed on this static build.
+- Auth gate, cart, checkout (Bitcoin / Bank transfer / PayID), account, contact  
+- Telegram: https://t.me/anabolicpharmacys  

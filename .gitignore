@@ -6,3 +6,5 @@ _mirror_failures.txt
 # Hostinger packaging (generated locally / artifacts)
 hostinger-upload/
 hostinger-upload.zip
+hostinger-starter/
+hostinger-starter.zip
