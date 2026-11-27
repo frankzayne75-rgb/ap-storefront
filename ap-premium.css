@@ -1,0 +1,62 @@
+/* Anabolic Pharmacy AU — static preview skin */
+:root {
+  --ap-ink: #0e1a14;
+  --ap-gold: #c4a35a;
+  --ap-mist: #e8efe9;
+}
+body {
+  scroll-behavior: smooth;
+}
+.ap-hero-banner {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0e1a14 0%, #1a3a2a 45%, #0e1a14 100%);
+  color: #f5f7f5;
+  padding: 3.5rem 1.5rem 3rem;
+  text-align: center;
+}
+.ap-hero-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 70% 20%, rgba(196,163,90,.25), transparent 55%);
+  pointer-events: none;
+}
+.ap-hero-banner .ap-brand {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  letter-spacing: .04em;
+  margin: 0 0 .5rem;
+  position: relative;
+  z-index: 1;
+}
+.ap-hero-banner .ap-tagline {
+  font-size: clamp(1rem, 2.2vw, 1.35rem);
+  color: var(--ap-gold);
+  margin: 0 0 1rem;
+  position: relative;
+  z-index: 1;
+}
+.ap-hero-banner .ap-sub {
+  max-width: 36rem;
+  margin: 0 auto;
+  opacity: .9;
+  position: relative;
+  z-index: 1;
+}
+.ap-fade-in {
+  animation: apFade .9s ease both;
+}
+@keyframes apFade {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+.ap-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.ap-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}

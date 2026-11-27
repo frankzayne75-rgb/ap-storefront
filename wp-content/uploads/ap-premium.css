@@ -1,0 +1,1515 @@
+/* ============================================================
+   ANABOLIC PHARMACY AU — PREMIUM REDESIGN v1.1
+   Dark pharmaceutical luxury aesthetic
+   ============================================================ */
+
+/* CSS CUSTOM PROPERTIES — override WoodMart's defaults */
+:root {
+  --wd-primary-cl: #c9a84c !important;
+  --wd-secondary-cl: #e8c86a !important;
+  --ap-black:   #080c14;
+  --ap-dark:    #111827;
+  --ap-dark2:   #1a2335;
+  --ap-dark3:   #222d40;
+  --ap-gold:    #c9a84c;
+  --ap-gold-lt: #e8c86a;
+  --ap-gold-dk: #9a7a35;
+  --ap-white:   #f5f5f0;
+  --ap-muted:   #7a8fa8;
+  --ap-text:    #c7d0dc;
+  --ap-border:  rgba(201,168,76,0.15);
+  --ap-glow:    rgba(201,168,76,0.08);
+}
+
+/* === GLOBAL FOUNDATION ======================================= */
+html, body {
+  background: var(--ap-black) !important;
+  color: var(--ap-white) !important;
+}
+
+body {
+  font-family: 'Montserrat','Helvetica Neue',Arial,sans-serif !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+/* Remove any white backgrounds from structural containers */
+.woodmart-content-holder,
+#page,
+.site,
+main.site-main,
+#content,
+.website-wrapper,
+.main-page-wrapper,
+.content-layout-wrapper,
+.site-content,
+.entry-content,
+.woocommerce-page .content-area {
+  background: var(--ap-black) !important;
+}
+
+a {
+  color: var(--ap-gold) !important;
+  transition: color 0.2s ease !important;
+}
+a:hover {
+  color: var(--ap-gold-lt) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--ap-white) !important;
+  font-family: 'Montserrat','Helvetica Neue',Arial,sans-serif !important;
+}
+
+p, li, .elementor-widget-text-editor, .entry-content, .woocommerce-tabs .panel, .term-description, .product-short-description {
+  color: var(--ap-text) !important;
+}
+p strong, li strong { color: var(--ap-white) !important; }
+.elementor-widget-text-editor h1, .elementor-widget-text-editor h2, .elementor-widget-text-editor h3, .elementor-widget-text-editor h4 {
+  color: var(--ap-white) !important;
+}
+
+/* === TOP BAR ================================================= */
+.woodmart-top-bar,
+.wd-top-bar,
+.wd-header-top,
+.header-top {
+  background: #040608 !important;
+  border-bottom: 1px solid rgba(201,168,76,0.1) !important;
+  color: var(--ap-muted) !important;
+  font-size: 11px !important;
+  letter-spacing: 0.5px !important;
+}
+.woodmart-top-bar a,
+.wd-top-bar a {
+  color: var(--ap-muted) !important;
+}
+.woodmart-top-bar a:hover,
+.wd-top-bar a:hover {
+  color: var(--ap-gold) !important;
+}
+
+/* === MAIN HEADER ============================================= */
+.site-header,
+header.site-header,
+.woodmart-header-sticky-clone,
+.wd-header,
+.wd-header-row,
+.header-top-row,
+.header-middle-row,
+.header-bottom-row {
+  background: var(--ap-black) !important;
+  border-bottom: 1px solid var(--ap-border) !important;
+  box-shadow: none !important;
+}
+
+/* Sticky header */
+.woodmart-sticky-header .site-header,
+.wd-sticky-header .wd-header,
+.header-sticky .site-header {
+  background: rgba(8,12,20,0.97) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.6) !important;
+  border-bottom: 1px solid var(--ap-border) !important;
+}
+
+/* Logo wrapper */
+.site-logo,
+.header-logo-wrap,
+.woodmart-logo,
+.wd-header-logo {
+  padding: 14px 0 !important;
+}
+
+/* === NAVIGATION ============================================== */
+.woodmart-nav > li > a,
+.main-nav > li > a,
+.wd-nav > li > a,
+nav.site-navigation ul li a,
+.navbar-nav > li > a {
+  color: var(--ap-white) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  transition: color 0.2s ease !important;
+  padding: 20px 14px !important;
+}
+.woodmart-nav > li > a:hover,
+.main-nav > li > a:hover,
+.wd-nav > li > a:hover {
+  color: var(--ap-gold) !important;
+}
+
+/* Active/current item */
+.woodmart-nav > li.current-menu-item > a,
+.woodmart-nav > li.current-menu-ancestor > a,
+.wd-nav > li.current-menu-item > a {
+  color: var(--ap-gold) !important;
+}
+
+/* Dropdown menus */
+.woodmart-nav .sub-menu,
+.main-nav .sub-menu,
+.wd-nav .sub-menu,
+.wdhb-col .sub-menu {
+  background: var(--ap-dark) !important;
+  border: 1px solid var(--ap-border) !important;
+  border-top: 2px solid var(--ap-gold) !important;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.8) !important;
+  border-radius: 0 0 4px 4px !important;
+}
+.woodmart-nav .sub-menu li a,
+.wd-nav .sub-menu li a {
+  color: var(--ap-muted) !important;
+  font-size: 11px !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  border-bottom: 1px solid rgba(255,255,255,0.04) !important;
+  padding: 10px 16px !important;
+  display: block !important;
+  background: transparent !important;
+}
+.woodmart-nav .sub-menu li a:hover,
+.wd-nav .sub-menu li a:hover {
+  color: var(--ap-gold) !important;
+  background: var(--ap-glow) !important;
+  padding-left: 22px !important;
+}
+
+/* Mega menu */
+.wd-mega-menu,
+.woodmart-mega-menu {
+  background: var(--ap-dark) !important;
+  border: 1px solid var(--ap-border) !important;
+  border-top: 2px solid var(--ap-gold) !important;
+}
+.wd-mega-menu .widget-title,
+.woodmart-mega-menu .widget-title {
+  color: var(--ap-white) !important;
+  font-size: 10px !important;
+  letter-spacing: 2.5px !important;
+}
+
+/* Header tools (search, account, wishlist, cart) */
+.header-tools .wd-tools-icon,
+.woodmart-header-tools-icons a,
+.wd-header-toolbar .wd-tools-icon,
+.woodmart-nav-icon {
+  color: var(--ap-white) !important;
+}
+.header-tools .wd-tools-icon:hover,
+.woodmart-header-tools-icons a:hover {
+  color: var(--ap-gold) !important;
+}
+
+/* Cart count badge */
+.wd-product-count,
+.woodmart-cart-counter,
+.woodmart-cart-amount {
+  background: var(--ap-gold) !important;
+  color: var(--ap-black) !important;
+  font-weight: 800 !important;
+}
+
+/* Search dropdown */
+.woodmart-search-form,
+.wd-search-form,
+.wd-header-search-form {
+  background: var(--ap-dark) !important;
+  border: 1px solid var(--ap-border) !important;
+}
+.woodmart-search-form input[type="search"],
+.wd-search-form input {
+  background: var(--ap-dark2) !important;
+  color: var(--ap-white) !important;
+  border-color: var(--ap-border) !important;
+}
+
+/* === HERO / SLIDER =========================================== */
+.rev_slider_wrapper,
+.woodmart-slider-container,
+.wd-slider,
+.elementor-section.elementor-top-section:first-child {
+  background: var(--ap-black) !important;
+}
+
+/* RevSlider dark overlay enhancement */
+.tp-bgimg,
+.rev-slider-bg {
+  filter: brightness(0.6) !important;
+}
+
+/* === PAGE/CONTENT AREA ====================================== */
+.woocommerce-page #primary,
+.woocommerce #primary,
+.archive #primary,
+.page-template #primary,
+.woodmart-wrap {
+  background: var(--ap-black) !important;
+}
+
+/* Section rows */
+.vc_row,
+.elementor-section,
+.wp-block-group,
+.woodmart-row {
+  background: transparent !important;
+}
+
+/* Alternating section backgrounds */
+.vc_row.vc_row-has-fill,
+.elementor-section.wd-section-dark,
+.woodmart-section-dark {
+  background: var(--ap-dark) !important;
+}
+
+/* === CATEGORY TILES (homepage) ============================== */
+.woodmart-product-cats-holder .woodmart-product-cat,
+.wd-product-cat-holder,
+.woocommerce-product-category,
+.wd-categories-widget li a,
+a.woodmart-product-cat {
+  background: var(--ap-dark) !important;
+  border: 1px solid var(--ap-border) !important;
+  transition: all 0.3s ease !important;
+  overflow: hidden !important;
+  text-decoration: none !important;
+}
+.woodmart-product-cats-holder .woodmart-product-cat:hover,
+.wd-product-cat-holder:hover {
+  border-color: rgba(201,168,76,0.5) !important;
+  transform: translateY(-4px) !important;
+  box-shadow: 0 16px 50px rgba(0,0,0,0.7) !important;
+}
+.woodmart-product-cats-holder .woodmart-cat-title,
+.wd-product-cat-title,
+.woodmart-product-cats-holder .cat-title h4,
+.woodmart-cat-title a,
+.cat-info .name {
+  color: var(--ap-white) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  background: var(--ap-dark) !important;
+}
+.woodmart-product-cats-holder .cat-title,
+.wd-product-cat-info {
+  background: var(--ap-dark) !important;
+  border-top: 1px solid var(--ap-border) !important;
+}
+
+/* === PRODUCT GRID =========================================== */
+.product-grid-item,
+ul.products li.product,
+.woocommerce ul.products li.product,
+.wd-products-holder .product {
+  background: var(--ap-dark) !important;
+  border: 1px solid var(--ap-border) !important;
+  transition: all 0.3s ease !important;
+  border-radius: 2px !important;
+}
+.product-grid-item:hover,
+ul.products li.product:hover {
+  border-color: rgba(201,168,76,0.4) !important;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.7) !important;
+  transform: translateY(-4px) !important;
+}
+
+/* Product image overlay */
+.product-grid-item .product-image-wrapper,
+.wd-product-images .product-image-wrapper {
+  background: var(--ap-dark2) !important;
+  overflow: hidden !important;
+}
+
+/* Product title */
+h2.woocommerce-loop-product__title,
+.woocommerce-loop-product__title,
+.product-grid-item .wd-entities-title,
+.wd-entities-title a,
+.product-title {
+  color: var(--ap-white) !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px !important;
+  margin-bottom: 6px !important;
+}
+.wd-entities-title a:hover,
+.woocommerce-loop-product__title a:hover {
+  color: var(--ap-gold) !important;
+}
+
+/* Product price */
+.woocommerce ul.products li.product .price,
+.product-grid-item .price,
+.wd-product-price .price {
+  color: var(--ap-gold) !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+}
+.woocommerce-Price-amount.amount {
+  color: var(--ap-gold) !important;
+}
+del .woocommerce-Price-amount.amount {
+  color: var(--ap-muted) !important;
+  opacity: 0.6 !important;
+}
+
+/* Add to cart on cards */
+.product-grid-item .add_to_cart_button,
+ul.products li.product .button,
+.wd-add-btn .button,
+.product-grid-item .wd-add-btn a {
+  background: transparent !important;
+  border: 1px solid var(--ap-gold) !important;
+  color: var(--ap-gold) !important;
+  font-size: 9px !important;
+  letter-spacing: 2.5px !important;
+  text-transform: uppercase !important;
+  font-weight: 700 !important;
+  padding: 9px 18px !important;
+  border-radius: 1px !important;
+  transition: all 0.25s ease !important;
+}
+.product-grid-item .add_to_cart_button:hover,
+ul.products li.product .button:hover,
+.wd-add-btn .button:hover {
+  background: var(--ap-gold) !important;
+  color: var(--ap-black) !important;
+  box-shadow: 0 4px 16px rgba(201,168,76,0.3) !important;
+}
+
+/* Product badges */
+.woocommerce span.onsale,
+.onsale,
+.woodmart-sale-badge {
+  background: var(--ap-gold) !important;
+  color: var(--ap-black) !important;
+  font-weight: 800 !important;
+  font-size: 10px !important;
+  letter-spacing: 0.5px !important;
+  border-radius: 2px !important;
+  padding: 4px 8px !important;
+}
+
+/* === PRIMARY BUTTON ========================================= */
+.woodmart-btn,
+.woodmart-btn-fill,
+.woocommerce #respond input#submit,
+.woocommerce a.button,
+.woocommerce button.button,
+.woocommerce input.button,
+.woocommerce a.button.alt,
+.woocommerce button.button.alt,
+.woocommerce input.button.alt,
+input[type="submit"],
+.wd-action-btn .wd-btn-text {
+  background: var(--ap-gold) !important;
+  color: var(--ap-black) !important;
+  font-weight: 700 !important;
+  font-size: 10px !important;
+  letter-spacing: 2.5px !important;
+  text-transform: uppercase !important;
+  border: none !important;
+  padding: 14px 32px !important;
+  border-radius: 1px !important;
+  transition: all 0.25s ease !important;
+  box-shadow: none !important;
+}
+.woodmart-btn:hover,
+.woocommerce a.button:hover,
+.woocommerce button.button:hover,
+input[type="submit"]:hover {
+  background: var(--ap-gold-lt) !important;
+  color: var(--ap-black) !important;
+  box-shadow: 0 6px 24px rgba(201,168,76,0.35) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Outline/ghost button variant */
+.woodmart-btn-style-outline,
+.woocommerce a.button.woodmart-outline,
+.wd-btn-outline {
+  background: transparent !important;
+  border: 1px solid var(--ap-gold) !important;
+  color: var(--ap-gold) !important;
+}
+.woodmart-btn-style-outline:hover {
+  background: var(--ap-gold) !important;
+  color: var(--ap-black) !important;
+}
+
+/* === SECTION HEADINGS ======================================= */
+.woodmart-title-container h2,
+.woodmart-title-container h3,
+.wd-section-title h2,
+.wd-section-title h3,
+.widget-title,
+.section-title {
+  color: var(--ap-white) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.03em !important;
+}
+/* Gold title underline */
+.woodmart-title-container .title-border:after,
+.woodmart-title-container .wd-title-line,
+.woodmart-title-container .title-border span {
+  background: var(--ap-gold) !important;
+}
+
+/* === FEATURES BAR =========================================== */
+.woodmart-features-bar,
+.wd-features-list,
+.woodmart-features-items {
+  background: var(--ap-dark) !important;
+  border-top: 1px solid var(--ap-border) !important;
+  border-bottom: 1px solid var(--ap-border) !important;
+}
+.woodmart-features-item,
+.wd-features-item {
+  border-right: 1px solid var(--ap-border) !important;
+}
+.woodmart-features-item:last-child,
+.wd-features-item:last-child {
+  border-right: none !important;
+}
+.woodmart-features-item .title,
+.wd-features-item .wd-feature-title,
+.wd-features-item strong {
+  color: var(--ap-white) !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px !important;
+}
+.woodmart-features-item p,
+.wd-features-item .wd-feature-desc {
+  color: var(--ap-muted) !important;
+  font-size: 11px !important;
+}
+.woodmart-features-item .wd-icon,
+.woodmart-features-item svg,
+.wd-features-item i,
+.wd-features-item svg {
+  color: var(--ap-gold) !important;
+  fill: var(--ap-gold) !important;
+}
+
+/* === FORMS ================================================== */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="number"],
+textarea,
+select,
+.select2-selection {
+  background: var(--ap-dark2) !important;
+  border: 1px solid rgba(255,255,255,0.1) !important;
+  color: var(--ap-white) !important;
+  padding: 12px 16px !important;
+  border-radius: 2px !important;
+  font-family: 'Montserrat',inherit !important;
+  font-size: 13px !important;
+}
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--ap-gold) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.1) !important;
+}
+::placeholder {
+  color: rgba(122,143,168,0.6) !important;
+}
+
+/* === SIDEBAR ================================================ */
+.woodmart-sidebar,
+#secondary.widget-area,
+.widget-area {
+  background: transparent !important;
+}
+.woodmart-sidebar .widget,
+#secondary .widget {
+  background: var(--ap-dark) !important;
+  border: 1px solid var(--ap-border) !important;
+  padding: 24px !important;
+  margin-bottom: 20px !important;
+  border-radius: 2px !important;
+}
+.woodmart-sidebar .widget-title,
+#secondary .widget-title {
+  color: var(--ap-white) !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: 3px !important;
+  text-transform: uppercase !important;
+  border-bottom: 1px solid var(--ap-border) !important;
+  padding-bottom: 14px !important;
+  margin-bottom: 16px !important;
+}
+/* Price filter */
+.widget_price_filter .price_slider_wrapper .ui-widget-content {
+  background: var(--ap-dark2) !important;
+}
+.widget_price_filter .price_slider_wrapper .ui-slider-range,
+.widget_price_filter .ui-slider .ui-slider-handle {
+  background: var(--ap-gold) !important;
+  border-color: var(--ap-gold) !important;
+}
+/* Filter checkbox */
+.woocommerce-widget-layered-nav-list a,
+.woocommerce-widget-layered-nav-list li a {
+  color: var(--ap-muted) !important;
+  font-size: 12px !important;
+}
+.woocommerce-widget-layered-nav-list a:hover {
+  color: var(--ap-gold) !important;
+}
+
+/* === BREADCRUMB ============================================= */
+.woocommerce-breadcrumb,
+.woodmart-breadcrumb,
+.wd-breadcrumb {
+  background: transparent !important;
+  color: var(--ap-muted) !important;
+  font-size: 11px !important;
+  letter-spacing: 0.5px !important;
+  padding: 16px 0 !important;
+}
+.woocommerce-breadcrumb a,
+.woodmart-breadcrumb a {
+  color: var(--ap-muted) !important;
+}
+.woocommerce-breadcrumb a:hover {
+  color: var(--ap-gold) !important;
+}
+
+/* === SINGLE PRODUCT ========================================= */
+.single-product .product {
+  background: transparent !important;
+}
+.single-product .product_title,
+.entry-title {
+  color: var(--ap-white) !important;
+  font-size: 28px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.03em !important;
+  line-height: 1.2 !important;
+}
+.single-product .price .woocommerce-Price-amount {
+  color: var(--ap-gold) !important;
+  font-size: 32px !important;
+  font-weight: 800 !important;
+}
+.woocommerce-product-details__short-description,
+.product-short-description {
+  color: var(--ap-muted) !important;
+  font-size: 14px !important;
+  line-height: 1.8 !important;
+}
+.single_add_to_cart_button.button {
+  background: var(--ap-gold) !important;
+  color: var(--ap-black) !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  letter-spacing: 3px !important;
+  padding: 16px 40px !important;
+  text-transform: uppercase !important;
+  border: none !important;
+  border-radius: 1px !important;
+}
+.single_add_to_cart_button.button:hover {
+  background: var(--ap-gold-lt) !important;
+  box-shadow: 0 6px 24px rgba(201,168,76,0.4) !important;
+}
+/* Product tabs */
+.woocommerce-tabs ul.tabs,
+.woocommerce .woocommerce-tabs .tabs {
+  border-bottom: 1px solid var(--ap-border) !important;
+}
+.woocommerce-tabs ul.tabs li,
+.woocommerce .woocommerce-tabs .tabs li {
+  background: transparent !important;
+  border: 1px solid transparent !important;
+}
+.woocommerce-tabs ul.tabs li a,
+.woocommerce .woocommerce-tabs .tabs li a {
+  color: var(--ap-muted) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: 1.5px !important;
+  text-transform: uppercase !important;
+}
+.woocommerce-tabs ul.tabs li.active a,
+.woocommerce .woocommerce-tabs .tabs li.active a {
+  color: var(--ap-gold) !important;
+}
+.woocommerce-tabs ul.tabs li.active,
+.woocommerce .woocommerce-tabs .tabs li.active {
+  border-color: var(--ap-border) !important;
+  border-bottom-color: transparent !important;
+  background: var(--ap-dark) !important;
+}
+.woocommerce-Tabs-panel {
+  background: var(--ap-dark) !important;
+  border: 1px solid var(--ap-border) !important;
+  border-top: none !important;
+  color: var(--ap-muted) !important;
+  padding: 30px !important;
+}
+
+/* === NOTICES ================================================ */
+.woocommerce-message,
+.woocommerce-info,
+.wc-block-components-notice-banner {
+  background: var(--ap-dark) !important;
+  border-left: 4px solid var(--ap-gold) !important;
+  color: var(--ap-white) !important;
+}
+.woocommerce-error {
+  background: var(--ap-dark) !important;
+  border-left: 4px solid #c0392b !important;
+  color: var(--ap-white) !important;
+}
+
+/* === CART & CHECKOUT ======================================== */
+.cart-collaterals,
+.shop_table,
+.woocommerce-checkout-review-order,
+table.cart {
+  background: transparent !important;
+}
+.woocommerce table.shop_table {
+  border: 1px solid var(--ap-border) !important;
+}
+.woocommerce table.shop_table th {
+  background: var(--ap-dark) !important;
+  color: var(--ap-white) !important;
+  font-size: 10px !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  border-bottom: 1px solid var(--ap-border) !important;
+  padding: 14px 16px !important;
+}
+.woocommerce table.shop_table td {
+  background: var(--ap-dark2) !important;
+  color: var(--ap-muted) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.04) !important;
+  padding: 16px !important;
+}
+/* Order total box */
+.cart_totals,
+.woocommerce-checkout-review-order table {
+  background: var(--ap-dark) !important;
+  border: 1px solid var(--ap-border) !important;
+  border-radius: 2px !important;
+}
+
+/* === FOOTER ================================================= */
+.site-footer,
+footer.site-footer,
+#colophon,
+.woodmart-footer,
+.wd-footer {
+  background: var(--ap-dark) !important;
+  border-top: 1px solid var(--ap-border) !important;
+  color: var(--ap-muted) !important;
+}
+.footer-top,
+.footer-container,
+.woodmart-footer-widgets {
+  background: var(--ap-dark) !important;
+  padding: 60px 0 40px !important;
+}
+.footer-widget-area,
+.footer-widgets,
+.woodmart-footer .widget-area {
+  background: var(--ap-dark) !important;
+}
+.footer-bottom,
+.woodmart-footer-bottom,
+.wd-footer-bottom,
+.site-info {
+  background: #040608 !important;
+  border-top: 1px solid rgba(201,168,76,0.08) !important;
+  color: var(--ap-muted) !important;
+  font-size: 11px !important;
+  letter-spacing: 0.5px !important;
+  padding: 18px 0 !important;
+}
+
+/* Footer widget titles */
+.site-footer .widget-title,
+.woodmart-footer .widget-title,
+footer .widget-title,
+.footer-widget .widget-title {
+  color: var(--ap-white) !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: 3.5px !important;
+  text-transform: uppercase !important;
+  margin-bottom: 20px !important;
+  padding-bottom: 12px !important;
+  border-bottom: 1px solid var(--ap-border) !important;
+  position: relative !important;
+}
+.site-footer .widget-title:after {
+  content: '' !important;
+  display: block !important;
+  width: 24px !important;
+  height: 2px !important;
+  background: var(--ap-gold) !important;
+  position: absolute !important;
+  bottom: -1px !important;
+  left: 0 !important;
+}
+
+/* Footer links and text */
+.site-footer a,
+.woodmart-footer a,
+footer a {
+  color: var(--ap-muted) !important;
+  font-size: 13px !important;
+  transition: color 0.2s ease !important;
+  text-decoration: none !important;
+  display: block !important;
+  padding: 4px 0 !important;
+}
+.site-footer a:hover,
+.woodmart-footer a:hover,
+footer a:hover {
+  color: var(--ap-gold) !important;
+}
+.site-footer p,
+.woodmart-footer p,
+footer p {
+  color: var(--ap-muted) !important;
+  font-size: 13px !important;
+  line-height: 1.8 !important;
+}
+
+/* === TESTIMONIALS ============================================ */
+.testimonials .testimonial-inner {
+  background: linear-gradient(180deg, var(--ap-dark2) 0%, var(--ap-dark) 100%) !important;
+  background-color: var(--ap-dark) !important;
+  border: 1px solid var(--ap-border) !important;
+  border-radius: 6px !important;
+  padding: 44px 30px 34px !important;
+  position: relative !important;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.45) !important;
+  transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease !important;
+  height: 100%;
+}
+.testimonials .testimonial-inner::before {
+  content: '\201C';
+  position: absolute; top: 10px; left: 22px;
+  font-size: 84px; line-height: 1; font-family: Georgia, serif;
+  color: var(--ap-gold); opacity: .25; pointer-events: none;
+}
+.testimonials .testimonial:hover .testimonial-inner {
+  transform: translateY(-6px);
+  border-color: rgba(201,168,76,0.45) !important;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(201,168,76,0.15) !important;
+}
+.testimonials .testimonial-rating,
+.testimonials .star-rating,
+.testimonials .star-rating span::before,
+.testimonials .star-rating::before {
+  color: var(--ap-gold) !important;
+}
+.testimonials .testimonial-content,
+.testimonials .testimonial-content p {
+  color: var(--ap-text) !important;
+  font-size: 14.5px !important;
+  line-height: 1.8 !important;
+}
+.testimonials .testimonial-content h1,
+.testimonials .testimonial-content h2,
+.testimonials .testimonial-content h3,
+.testimonials .testimonial-content h4,
+.testimonials .testimonial-content h5,
+.testimonials .testimonial-title,
+.testimonials .title {
+  color: var(--ap-white) !important;
+  font-size: 17px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0 !important;
+  margin: 0 0 14px !important;
+}
+.testimonials .testimonial-name,
+.testimonials .testimonial-meta,
+.testimonials .testimonial-content strong,
+.testimonials .testimonial-content b {
+  color: var(--ap-gold) !important;
+  font-weight: 700 !important;
+}
+.testimonials .testimonial-content footer {
+  color: var(--ap-gold) !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  margin-top: 18px !important;
+  letter-spacing: 0.3px !important;
+}
+.testimonials .testimonial-content footer span,
+.testimonials .testimonial-name span,
+.testimonials .testimonial-meta span {
+  color: var(--ap-muted) !important;
+  font-weight: 400 !important;
+}
+.testimonials .wd-btn-arrow,
+.testimonials .owl-nav > div,
+.testimonials .wd-carousel-nav-arrow {
+  background: rgba(8,12,20,0.9) !important;
+  border: 1px solid var(--ap-border) !important;
+  color: var(--ap-gold) !important;
+  border-radius: 50% !important;
+}
+.testimonials .wd-btn-arrow:hover,
+.testimonials .wd-carousel-nav-arrow:hover { background: var(--ap-gold) !important; color: #080c14 !important; }
+
+/* Elementor buttons (e.g. "Write a review") */
+.elementor-button, .elementor-button-link, a.elementor-button {
+  background: linear-gradient(135deg, var(--ap-gold-lt), var(--ap-gold)) !important;
+  background-color: var(--ap-gold) !important;
+  color: #080c14 !important;
+  border: none !important;
+  border-radius: 2px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  padding: 14px 28px !important;
+  box-shadow: 0 10px 30px rgba(201,168,76,0.2) !important;
+  transition: transform .25s ease, box-shadow .25s ease !important;
+}
+.elementor-button:hover, a.elementor-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px rgba(201,168,76,0.35) !important;
+  color: #080c14 !important;
+}
+
+/* === PAGE TITLE BANNER (shop/category/product) ============== */
+.page-title, .page-title-default, .title-shop, .title-blog, .title-page {
+  background-image:
+    radial-gradient(ellipse 60% 80% at 80% 50%, rgba(201,168,76,0.12) 0%, transparent 60%),
+    linear-gradient(160deg, #0b1220 0%, #080c14 60%, #04060a 100%) !important;
+  background-color: #080c14 !important;
+  border-bottom: 1px solid var(--ap-border) !important;
+}
+.page-title .entry-title, .page-title h1 { color: var(--ap-white) !important; letter-spacing: -0.5px !important; }
+.page-title .wd-nav-product-cat a, .page-title .product-categories a { color: var(--ap-text) !important; }
+.page-title .wd-nav-product-cat a:hover { color: var(--ap-gold) !important; }
+.page-title .wd-nav-product-cat .count { color: var(--ap-gold) !important; }
+
+/* Sidebar widget titles and labels */
+.sidebar-container .widget-title, .wd-sidebar .widget-title, .widget-area .widget-title {
+  color: var(--ap-white) !important;
+}
+.sidebar-container, .wd-sidebar, .price_label, .sidebar-container label { color: var(--ap-text) !important; }
+
+/* === PREMIUM HERO v1.3 ======================================= */
+.home .whb-header,
+.home .main-page-wrapper,
+.home .site-content,
+.home .container.main-page-wrapper {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+.elementor-element-e910896 {
+  padding: 0 !important;
+  margin: 0 !important;
+  max-width: none !important;
+  background: #080c14 !important;
+  min-height: 60vh;
+}
+.elementor-element-e910896 > :not(#ap-hero) { display: none !important; }
+#ap-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 78vh;
+  display: flex;
+  align-items: center;
+  background:
+    radial-gradient(ellipse 60% 70% at 80% 50%, rgba(201,168,76,0.14) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at 10% 90%, rgba(26,35,53,0.9) 0%, transparent 60%),
+    linear-gradient(160deg, #0b1220 0%, #080c14 55%, #04060a 100%);
+  color: var(--ap-white);
+}
+#ap-hero .ap-hero-grid {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.06) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 70% 80% at 50% 50%, #000 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 80% at 50% 50%, #000 30%, transparent 100%);
+}
+#ap-hero .ap-hero-inner {
+  position: relative; z-index: 2;
+  max-width: 1222px; width: 100%;
+  margin: 0 auto; padding: 96px 24px 72px;
+}
+#ap-hero .ap-hero-eyebrow {
+  display: inline-block;
+  font-size: 11px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--ap-gold);
+  padding: 8px 16px;
+  border: 1px solid rgba(201,168,76,0.35);
+  border-radius: 2px;
+  margin-bottom: 28px;
+  animation: ap-page-in 0.6s 0.1s ease both;
+}
+#ap-hero .ap-hero-title {
+  font-size: clamp(38px, 6vw, 72px) !important;
+  line-height: 1.04 !important;
+  font-weight: 800 !important;
+  letter-spacing: -1.5px;
+  color: var(--ap-white) !important;
+  margin: 0 0 24px !important;
+  max-width: 760px;
+  animation: ap-page-in 0.7s 0.25s ease both;
+}
+#ap-hero .ap-hero-title em {
+  font-style: normal;
+  background: linear-gradient(90deg, var(--ap-gold) 0%, var(--ap-gold-lt) 50%, var(--ap-gold) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: ap-gold-shine 4s linear infinite;
+}
+@keyframes ap-gold-shine { to { background-position: 200% center; } }
+#ap-hero .ap-hero-sub {
+  font-size: 17px !important; line-height: 1.7 !important;
+  color: var(--ap-muted) !important;
+  max-width: 560px; margin: 0 0 36px !important;
+  animation: ap-page-in 0.7s 0.4s ease both;
+}
+#ap-hero .ap-hero-cta {
+  display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 56px;
+  animation: ap-page-in 0.7s 0.55s ease both;
+}
+#ap-hero .ap-btn {
+  display: inline-flex; align-items: center;
+  padding: 16px 32px !important;
+  font-size: 12px !important; font-weight: 700 !important;
+  letter-spacing: 2.5px !important; text-transform: uppercase !important;
+  border-radius: 2px !important; text-decoration: none !important;
+  transition: transform .25s ease, box-shadow .25s ease, background .25s ease !important;
+}
+#ap-hero .ap-btn-gold {
+  background: linear-gradient(135deg, var(--ap-gold-lt), var(--ap-gold)) !important;
+  color: #080c14 !important;
+  box-shadow: 0 10px 30px rgba(201,168,76,0.25);
+}
+#ap-hero .ap-btn-gold:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(201,168,76,0.4); }
+#ap-hero .ap-btn-ghost {
+  background: transparent !important;
+  color: var(--ap-white) !important;
+  border: 1px solid rgba(245,245,240,0.25) !important;
+}
+#ap-hero .ap-btn-ghost:hover { border-color: var(--ap-gold) !important; color: var(--ap-gold) !important; transform: translateY(-3px); }
+#ap-hero .ap-hero-stats {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; gap: 0; flex-wrap: wrap;
+  border-top: 1px solid rgba(201,168,76,0.18);
+  max-width: 620px;
+  animation: ap-page-in 0.7s 0.7s ease both;
+}
+#ap-hero .ap-hero-stats li {
+  display: flex; flex-direction: column; padding: 22px 36px 0 0; margin: 0;
+}
+#ap-hero .ap-hero-stats strong {
+  font-size: 26px; font-weight: 800; color: var(--ap-gold); letter-spacing: -0.5px; line-height: 1;
+}
+#ap-hero .ap-hero-stats span {
+  font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ap-muted); margin-top: 8px;
+}
+
+/* CSS vials illustration (right side) */
+#ap-hero .ap-hero-vial {
+  position: absolute; right: 8%; bottom: 0; z-index: 1;
+  display: flex; gap: 40px; align-items: flex-end;
+  pointer-events: none;
+}
+.ap-vial { position: relative; width: 120px; animation: ap-vial-float 6s ease-in-out infinite; }
+.ap-vial-2 { width: 96px; margin-bottom: 40px; animation-delay: -3s; opacity: .8; }
+.ap-vial-cap {
+  height: 34px; margin: 0 22px;
+  background: linear-gradient(180deg, #e8c86a 0%, #a88636 100%);
+  border-radius: 6px 6px 2px 2px;
+  box-shadow: inset 0 -6px 0 rgba(0,0,0,.25);
+}
+.ap-vial-body {
+  position: relative; height: 240px;
+  background: linear-gradient(90deg, rgba(255,255,255,.14), rgba(255,255,255,.04) 40%, rgba(255,255,255,.12) 80%, rgba(255,255,255,.03));
+  border: 1px solid rgba(255,255,255,.25);
+  border-top: none; border-radius: 0 0 22px 22px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0,0,0,.6), inset 0 0 40px rgba(201,168,76,.08);
+}
+.ap-vial-liquid {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 62%;
+  background: linear-gradient(180deg, rgba(201,168,76,.55), rgba(201,168,76,.9));
+  animation: ap-liquid 5s ease-in-out infinite;
+}
+.ap-vial-label {
+  position: absolute; left: 10px; right: 10px; top: 60px;
+  padding: 14px 0; text-align: center;
+  background: rgba(8,12,20,.85); border: 1px solid rgba(201,168,76,.5);
+  color: var(--ap-gold); font-weight: 800; letter-spacing: 4px; font-size: 14px;
+}
+@keyframes ap-vial-float { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-14px) } }
+@keyframes ap-liquid { 0%,100% { height: 62% } 50% { height: 66% } }
+
+@media (max-width: 991px) {
+  #ap-hero { min-height: auto; }
+  #ap-hero .ap-hero-inner { padding: 64px 20px 56px; }
+  #ap-hero .ap-hero-vial { display: none; }
+  #ap-hero .ap-hero-stats li { padding-right: 26px; }
+}
+
+/* === FOOTER UPGRADE v1.2 ===================================== */
+
+/* Top gold accent bar above footer */
+.footer-container::before {
+  content: '' !important;
+  display: block !important;
+  width: 100% !important;
+  height: 2px !important;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--ap-gold) 25%,
+    var(--ap-gold-lt) 50%,
+    var(--ap-gold) 75%,
+    transparent 100%) !important;
+  margin-bottom: 60px !important;
+}
+
+/* Footer col-1: logo brand block */
+#ap-footer-brand {
+  margin-bottom: 28px;
+}
+#ap-footer-brand img {
+  width: 160px !important;
+  height: auto !important;
+  filter: brightness(1.05) !important;
+  margin-bottom: 16px !important;
+  display: block !important;
+}
+#ap-footer-tagline {
+  font-size: 12px !important;
+  line-height: 1.9 !important;
+  color: var(--ap-muted) !important;
+  max-width: 260px !important;
+  margin-bottom: 22px !important;
+}
+
+/* Social row */
+#ap-footer-socials {
+  display: flex !important;
+  gap: 10px !important;
+  margin-top: 8px !important;
+}
+#ap-footer-socials a {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(201,168,76,0.3) !important;
+  background: rgba(201,168,76,0.06) !important;
+  color: var(--ap-gold) !important;
+  font-size: 13px !important;
+  padding: 0 !important;
+  transition: all 0.25s ease !important;
+  text-decoration: none !important;
+}
+#ap-footer-socials a:hover {
+  background: var(--ap-gold) !important;
+  color: #080c14 !important;
+  border-color: var(--ap-gold) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Footer info list (Sydney / email) */
+.footer-column-1 .wd-list-item,
+.footer-column-1 li {
+  border-bottom: 1px solid rgba(201,168,76,0.07) !important;
+  padding: 8px 0 !important;
+  font-size: 12.5px !important;
+}
+
+/* Footer menu links — add arrow on hover */
+.site-footer ul li a {
+  position: relative !important;
+  padding-left: 0 !important;
+  transition: padding-left 0.2s ease, color 0.2s ease !important;
+}
+.site-footer ul li a::before {
+  content: '›' !important;
+  position: absolute !important;
+  left: -14px !important;
+  color: var(--ap-gold) !important;
+  opacity: 0 !important;
+  transition: opacity 0.2s ease, left 0.2s ease !important;
+  font-size: 16px !important;
+  line-height: 1 !important;
+}
+.site-footer ul li a:hover {
+  padding-left: 14px !important;
+  color: var(--ap-gold) !important;
+}
+.site-footer ul li a:hover::before {
+  opacity: 1 !important;
+  left: 0 !important;
+}
+
+/* Premium copyright bar */
+#ap-footer-copyright {
+  background: #040608 !important;
+  border-top: 1px solid rgba(201,168,76,0.12) !important;
+  padding: 18px 0 !important;
+  text-align: center !important;
+}
+#ap-footer-copyright .ap-cr-inner {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  max-width: 1222px !important;
+  margin: 0 auto !important;
+  padding: 0 20px !important;
+}
+#ap-footer-copyright p {
+  font-size: 11px !important;
+  letter-spacing: 0.5px !important;
+  color: rgba(122,143,168,0.7) !important;
+  margin: 0 !important;
+}
+#ap-footer-copyright .ap-cr-badges {
+  display: flex !important;
+  gap: 16px !important;
+  align-items: center !important;
+}
+#ap-footer-copyright .ap-cr-badges span {
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: 1.5px !important;
+  text-transform: uppercase !important;
+  color: rgba(201,168,76,0.5) !important;
+}
+
+/* Hide WoodMart's own copyright bar since we inject ours */
+.site-info .woodmart-copyright {
+  display: none !important;
+}
+
+/* Make footer col-1 content area above full height if no Elementor content */
+.footer-column-1 .elementor {
+  padding-top: 0 !important;
+}
+.footer-column-1 .elementor-widget-wd_list .wd-list-item-content {
+  color: var(--ap-muted) !important;
+  font-size: 12.5px !important;
+}
+.footer-column-1 .wd-icon {
+  color: var(--ap-gold) !important;
+}
+
+/* Hover reveal on footer icon items */
+.footer-column-1 .wd-list-item:hover .wd-icon,
+.footer-column-1 .wd-list-item:hover {
+  color: var(--ap-gold-lt) !important;
+}
+
+/* === PAGINATION ============================================= */
+.woocommerce nav.woocommerce-pagination ul,
+.woodmart-pagination .page-numbers {
+  background: transparent !important;
+}
+.woocommerce nav.woocommerce-pagination ul li a,
+.woocommerce nav.woocommerce-pagination ul li span,
+.page-numbers a,
+.page-numbers span {
+  background: var(--ap-dark) !important;
+  color: var(--ap-muted) !important;
+  border: 1px solid var(--ap-border) !important;
+  font-size: 12px !important;
+  min-width: 36px !important;
+  line-height: 36px !important;
+  padding: 0 10px !important;
+}
+.woocommerce nav.woocommerce-pagination ul li a:hover,
+.page-numbers a:hover {
+  background: var(--ap-dark2) !important;
+  color: var(--ap-gold) !important;
+  border-color: var(--ap-gold) !important;
+}
+.woocommerce nav.woocommerce-pagination ul li span.current,
+.page-numbers .current {
+  background: var(--ap-gold) !important;
+  color: var(--ap-black) !important;
+  border-color: var(--ap-gold) !important;
+}
+
+/* === MOBILE NAVIGATION ====================================== */
+@media (max-width: 1024px) {
+  .woodmart-side-nav,
+  .woodmart-mobile-navigation,
+  .wd-side-nav,
+  .woodmart-offcanvas-nav {
+    background: var(--ap-dark) !important;
+  }
+  .woodmart-side-nav ul li a,
+  .wd-side-nav ul li a,
+  .woodmart-mobile-navigation a {
+    color: var(--ap-white) !important;
+    border-bottom: 1px solid var(--ap-border) !important;
+  }
+  .woodmart-side-nav ul li a:hover {
+    color: var(--ap-gold) !important;
+  }
+  .woodmart-hamburger-icon,
+  .wd-hamburger,
+  .woodmart-mobile-nav-icon,
+  .woodmart-nav-icon {
+    color: var(--ap-white) !important;
+  }
+}
+
+/* === SCROLLBAR STYLING ====================================== */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--ap-black); }
+::-webkit-scrollbar-thumb { background: var(--ap-dark3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--ap-gold-dk); }
+
+/* === SELECTION ============================================= */
+::selection { background: rgba(201,168,76,0.3); color: var(--ap-white); }
+
+/* === BACK TO TOP =========================================== */
+.woodmart-back-to-top,
+.wd-back-to-top,
+#back-to-top {
+  background: var(--ap-gold) !important;
+  color: var(--ap-black) !important;
+  border-radius: 2px !important;
+}
+
+/* === HOMEPAGE EXTRA: gold strip at very top ================ */
+.site-header:before {
+  content: '' !important;
+  display: block !important;
+  width: 100% !important;
+  height: 2px !important;
+  background: linear-gradient(90deg, transparent, var(--ap-gold), transparent) !important;
+}
+
+/* === PRODUCT QUICK-VIEW ===================================== */
+.woodmart-quick-view-popup,
+.wd-popup-product {
+  background: var(--ap-dark) !important;
+}
+
+/* === STOCK BADGE =========================================== */
+.in-stock,
+.stock.in-stock {
+  color: #4ade80 !important;
+  font-size: 11px !important;
+}
+.out-of-stock {
+  color: #f87171 !important;
+  font-size: 11px !important;
+}
+
+/* ============================================================
+   ELEMENTOR & WOODMART HEADER BUILDER SPECIFICS
+   ============================================================ */
+
+/* Elementor containers - force dark backgrounds */
+.elementor-section .elementor-container,
+.elementor-element,
+.elementor-widget-wrap,
+.e-con,
+.e-con-inner {
+  background-color: transparent !important;
+}
+
+/* Elementor sections that WoodMart injects with light bg */
+.elementor-section.elementor-section-boxed {
+  background-color: var(--ap-black) !important;
+}
+.elementor-section.has-bg {
+  background-color: var(--ap-dark) !important;
+}
+
+/* Elementor heading widget */
+.elementor-widget-heading .elementor-heading-title {
+  color: var(--ap-white) !important;
+}
+
+/* Elementor text editor */
+.elementor-widget-text-editor,
+.elementor-widget-text-editor p,
+.elementor-widget-text-editor li {
+  color: var(--ap-text) !important;
+}
+
+/* Elementor divider */
+.elementor-divider-separator {
+  border-color: var(--ap-border) !important;
+}
+
+/* Elementor icon boxes */
+.elementor-icon-box-title,
+.elementor-icon-box-title a {
+  color: var(--ap-white) !important;
+}
+.elementor-icon-box-description {
+  color: var(--ap-muted) !important;
+}
+.elementor-icon i,
+.elementor-icon svg {
+  color: var(--ap-gold) !important;
+  fill: var(--ap-gold) !important;
+}
+
+/* WoodMart Header Builder (WHB) rows */
+.whb-row,
+.whb-general-header,
+.whb-general-header .container,
+.whb-main-header,
+.whb-header {
+  background-color: var(--ap-black) !important;
+}
+
+/* WHB sticky clone */
+.whb-sticky-header,
+.whb-clone {
+  background-color: rgba(8,12,20,0.97) !important;
+}
+
+/* ============================================================
+   HOMEPAGE HERO SECTION OVERLAY
+   Makes the hero text stand out with a premium dark treatment
+   ============================================================ */
+.rev_slider .slotholder:after,
+.rev_slider_wrapper .tp-bgimg {
+  content: '' !important;
+}
+
+/* Gold accent line between header sections */
+.whb-header-row {
+  border-bottom: none !important;
+}
+.whb-header:last-child .whb-row {
+  border-bottom: 1px solid var(--ap-border) !important;
+}
+
+/* ============================================================
+   WOODMART PRODUCT CATEGORIES WIDGET
+   ============================================================ */
+.product-categories li a,
+.woocommerce-widget-layered-nav-list li a {
+  color: var(--ap-muted) !important;
+  font-size: 12px !important;
+}
+.product-categories li a:hover {
+  color: var(--ap-gold) !important;
+}
+.product-categories li.current-cat > a {
+  color: var(--ap-gold) !important;
+  font-weight: 600 !important;
+}
+.product-categories li span.count {
+  color: var(--ap-dark3) !important;
+  font-size: 10px !important;
+}
+
+/* ============================================================
+   WooCommerce CHECKOUT & ACCOUNT PAGES
+   ============================================================ */
+.woocommerce-account .woocommerce,
+.woocommerce-checkout .woocommerce,
+.woocommerce-cart .woocommerce {
+  background: transparent !important;
+}
+.woocommerce-MyAccount-navigation {
+  background: var(--ap-dark) !important;
+  border: 1px solid var(--ap-border) !important;
+  border-radius: 2px !important;
+}
+.woocommerce-MyAccount-navigation li {
+  border-bottom: 1px solid var(--ap-border) !important;
+}
+.woocommerce-MyAccount-navigation li a {
+  color: var(--ap-muted) !important;
+  font-size: 12px !important;
+  letter-spacing: 0.5px !important;
+  padding: 12px 20px !important;
+  display: block !important;
+  text-transform: uppercase !important;
+}
+.woocommerce-MyAccount-navigation li a:hover,
+.woocommerce-MyAccount-navigation li.is-active a {
+  color: var(--ap-gold) !important;
+  background: var(--ap-glow) !important;
+}
+
+/* ============================================================
+   POPUP / MODAL
+   ============================================================ */
+.woodmart-popup-container,
+.mfp-bg {
+  background: rgba(4,6,8,0.9) !important;
+}
+.woodmart-popup,
+.mfp-content {
+  background: var(--ap-dark) !important;
+  border: 1px solid var(--ap-border) !important;
+}
+
+/* ============================================================
+   LOGO SIZE CONTROL
+   ============================================================ */
+.site-logo img,
+.woodmart-logo img,
+.header-logo img,
+.custom-logo {
+  max-height: 50px !important;
+  width: auto !important;
+}
+
+/* ============================================================
+   FONT IMPORT
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+
+/* ============================================================
+   MOBILE REVIEW FIXES v1.1.7
+   ============================================================ */
+/* scroll-to-top: was a white disc hidden under the chat launcher */
+.scrollToTop {
+  right: 96px !important;
+  bottom: 24px !important;
+  background: var(--ap-dark2) !important;
+  color: var(--ap-gold) !important;
+  border: 1px solid var(--ap-border) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,.45) !important;
+}
+.scrollToTop:hover { background: var(--ap-gold) !important; color: var(--ap-black) !important; }
+@media (max-width: 767px) {
+  .scrollToTop { display: none !important; }
+}
+/* ticker strip: give the heading under it room */
+#ap-ticker { margin-bottom: 36px !important; }
+@media (max-width: 767px) {
+  #ap-ticker { margin-bottom: 28px !important; }
+}
+/* WoodMart "Powered by" row: replaced by #ap-footer-copyright */
+.min-footer { display: none !important; }
