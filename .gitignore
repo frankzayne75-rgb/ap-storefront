@@ -2,3 +2,7 @@
 *.pyc
 __pycache__/
 _mirror_failures.txt
+
+# Hostinger packaging (generated locally / artifacts)
+hostinger-upload/
+hostinger-upload.zip

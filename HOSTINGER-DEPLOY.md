@@ -1,3 +1,5 @@
+Use the prepared `hostinger-upload/` folder or `hostinger-upload.zip` (contents extract to `public_html` root).
+
 # Deploy ap-storefront on Hostinger
 
 This site is **static HTML/CSS/JS**. No Node build and no PHP are required.
