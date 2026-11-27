@@ -301,6 +301,56 @@
     };
   }
 
+
+  var BTC_WALLET = '1DpjFpydr853RX5JbxGcdjqccrkTyUNEDQ';
+  var TELEGRAM_URL = 'https://t.me/anabolicpharmacys';
+
+  function paymentDetailsHtml(method) {
+    if (method === 'bitcoin') {
+      return '<div class="ap-pay-card"><strong>Bitcoin wallet</strong><code id="ap-btc-addr">' + BTC_WALLET + '</code><button type="button" class="ap-btn ap-btn-ghost" id="ap-copy-btc">Copy address</button><p class="ap-inline-note">Send the exact order total in BTC to this address.</p></div>';
+    }
+    if (method === 'bank') {
+      return '<div class="ap-pay-card"><strong>Bank transfer</strong><p class="ap-muted">Choose Bank transfer at checkout. After placing your order, use the order ID as the payment reference. We will confirm details or follow up via your account email / Telegram.</p></div>';
+    }
+    if (method === 'payid') {
+      return '<div class="ap-pay-card"><strong>PayID</strong><p class="ap-muted">Select PayID at checkout. After placing your order, contact us on Telegram with your order ID to receive the PayID details.</p></div>';
+    }
+    return '';
+  }
+
+  function wirePaymentDetails(root) {
+    var sel = root.querySelector('#ap-pay-method');
+    var box = root.querySelector('#ap-pay-details');
+    if (!sel || !box) return;
+    function refresh() {
+      box.innerHTML = paymentDetailsHtml(sel.value);
+      var copy = box.querySelector('#ap-copy-btc');
+      if (copy) {
+        copy.addEventListener('click', function () {
+          navigator.clipboard.writeText(BTC_WALLET).then(function () {
+            toast('Bitcoin address copied');
+          }).catch(function () {
+            toast(BTC_WALLET);
+          });
+        });
+      }
+    }
+    sel.addEventListener('change', refresh);
+    refresh();
+  }
+
+  function injectTelegramChat() {
+    if (document.getElementById('ap-tg-chat')) return;
+    var a = document.createElement('a');
+    a.id = 'ap-tg-chat';
+    a.href = TELEGRAM_URL;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.setAttribute('aria-label', 'Chat on Telegram');
+    a.innerHTML = '<span class="ap-tg-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 6.93-1.43 6.74c-.1.46-.39.57-.79.36l-2.18-1.61-1.05 1.01c-.12.12-.22.22-.44.22l.16-2.22 4.05-3.66c.18-.16-.04-.24-.27-.09l-5.01 3.15-2.16-.68c-.47-.14-.48-.47.1-.7l8.44-3.26c.39-.14.73.1.58.74z"/></svg></span><span class="ap-tg-label">Telegram</span>';
+    document.body.appendChild(a);
+  }
+
   function mount(selectorFallback, html) {
     var existing = document.getElementById('ap-app-root');
     if (existing) existing.remove();
@@ -508,8 +558,9 @@
       '<div class="ap-field"><label>Address</label><input name="address" required></div>' +
       '<div class="ap-grid-2"><div class="ap-field"><label>City</label><input name="city" required></div><div class="ap-field"><label>State / Territory</label><input name="state" required></div></div>' +
       '<div class="ap-grid-2"><div class="ap-field"><label>Postcode</label><input name="postcode" required></div><div class="ap-field"><label>Country</label><input name="country" value="Australia" required></div></div>' +
-      '<div class="ap-field"><label>Payment method</label><select name="payment"><option value="bank">Bank transfer</option><option value="cod">Cash on delivery / arrange payment</option></select></div>' +
-      '<p class="ap-inline-note">Orders are saved to your account. Online card capture is not enabled on this static Hostinger build — choose bank transfer or arrange payment.</p>' +
+      '<div class="ap-field"><label>Payment method</label><select name="payment" id="ap-pay-method"><option value="bitcoin">Bitcoin</option><option value="bank">Bank transfer</option><option value="payid">PayID</option></select></div>' +
+      '<div id="ap-pay-details" class="ap-pay-box"></div>' +
+      '<p class="ap-inline-note">Choose Bitcoin, Bank transfer, or PayID. Payment instructions appear below based on your selection.</p>' +
       '<div class="ap-panel" style="margin:1rem 0 0;padding:1rem"><h3>Order summary</h3>' +
       lines +
       '<div class="ap-total-row"><span>Shipping</span><strong>' +
@@ -519,6 +570,7 @@
       '</strong></div></div>' +
       '<p class="ap-error" id="ap-checkout-error" hidden></p><div class="ap-actions"><button class="ap-btn ap-btn-primary" type="submit">Place order</button><a class="ap-btn" href="/cart/">Back to cart</a></div></form></div>';
     var root = mount(null, html);
+    wirePaymentDetails(root);
     root.querySelector('#ap-checkout-form').addEventListener('submit', function (e) {
       e.preventDefault();
       var err = root.querySelector('#ap-checkout-error');
@@ -529,6 +581,7 @@
         fd.forEach(function (v, k) {
           details[k] = String(v);
         });
+        if (details.payment === 'bitcoin') details.bitcoinWallet = BTC_WALLET;
         var order = placeOrder(details);
         toast('Order ' + order.id + ' placed');
         location.href = '/my-account/?placed=' + encodeURIComponent(order.id);
@@ -652,6 +705,8 @@
 
   function boot() {
     document.documentElement.classList.add('ap-store-ready');
+    document.querySelectorAll('#ap-cw, .ap-cw').forEach(function (el) { el.remove(); });
+    injectTelegramChat();
     if (currentUser()) document.body.classList.add('ap-authed');
     refreshCartBadge();
     fixLinks();

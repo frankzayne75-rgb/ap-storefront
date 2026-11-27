@@ -79,6 +79,10 @@
   padding: 0.65rem 0.75rem;
   font: inherit;
 }
+.ap-field select option {
+  background: #f5f7f5;
+  color: #111;
+}
 .ap-field textarea {
   min-height: 7rem;
   resize: vertical;
@@ -203,4 +207,41 @@ body.ap-authed .wd-header-my-account .wd-tools-text::after {
   font-size: 0.85rem;
   color: var(--ap-s-muted);
   margin-top: 0.5rem;
+}
+
+/* Telegram floating chat */
+#ap-tg-chat {
+  position: fixed;
+  right: 1.1rem;
+  bottom: 1.1rem;
+  z-index: 99998;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.7rem 1rem 0.7rem 0.75rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #2AABEE, #229ED9);
+  color: #fff !important;
+  text-decoration: none !important;
+  font-weight: 700;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+}
+#ap-tg-chat:hover { filter: brightness(1.06); color: #fff !important; }
+#ap-tg-chat .ap-tg-ico { display: grid; place-items: center; }
+.ap-pay-box { margin: 0.35rem 0 0.85rem; }
+.ap-pay-card {
+  background: #0b1210;
+  border: 1px solid var(--ap-s-line);
+  border-radius: 10px;
+  padding: 0.9rem 1rem;
+}
+.ap-pay-card code {
+  display: block;
+  margin: 0.5rem 0;
+  padding: 0.65rem 0.75rem;
+  background: #060a08;
+  border-radius: 8px;
+  word-break: break-all;
+  color: #f0e2b8;
+  font-size: 0.92rem;
 }
