@@ -25,3 +25,21 @@ This repo is plain static files (`index.html` at the root). On Hostinger:
 You can also pull from GitHub if your Hostinger plan supports Git deploy; the branch to use is `main`.
 
 No Node build step is required.
+
+
+## Performance
+
+This static build is optimized for Hostinger and local preview:
+
+- Dead commerce/analytics scripts removed; remaining JS is deferred
+- Images use `loading="lazy"` (above-the-fold logo stays eager)
+- Non-critical CSS loads asynchronously
+- Remote Google Fonts replaced with local/system stacks (no third-party font round-trips)
+- `ap-perf.js` prefetches nav targets on hover for faster page-to-page navigation
+- `.htaccess` enables gzip + browser caching on Hostinger Apache
+
+Local gzip preview:
+
+```bash
+python3 serve.py 8765
+```
